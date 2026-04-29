@@ -508,7 +508,9 @@ def gerar_excel(dfs: dict, kpis: dict, mes: str, loja: str, path_out: Path) -> P
         for col, (val, fmt) in enumerate(zip(vals, fmts), 1):
             c = ws2.cell(i, col, val)
             c.fill = fill(bg); c.border = borda_fina()
-            if fmt == "moeda": formatar_valor(c, "moeda")
+            if fmt == "moeda":
+                formatar_valor(c, "moeda")
+                c.font = fnt(size=9, color=TEXT_MAIN)
             elif fmt == "pct":
                 c.number_format = "0.0%"
                 c.alignment = aln("right")
@@ -568,7 +570,9 @@ def gerar_excel(dfs: dict, kpis: dict, mes: str, loja: str, path_out: Path) -> P
         for col, (val, fmt) in enumerate(zip(vals_r, fmts_r), 1):
             c = ws3.cell(linha, col, val)
             c.fill = fill(bg); c.border = borda_fina()
-            if fmt == "moeda": formatar_valor(c, "moeda")
+            if fmt == "moeda":
+                formatar_valor(c, "moeda")
+                c.font = fnt(size=9, color=TEXT_MAIN)
             elif fmt == "pct":
                 c.number_format = "0.0%"; c.alignment = aln("right")
                 c.font = fnt(size=9, color=TEXT_MAIN)
